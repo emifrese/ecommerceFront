@@ -6,6 +6,8 @@ import bananaContenta from "../../assets/bananita.png";
 
 import "./Product.css";
 
+console.log(import.meta.env.VITE_BACKEND_URL)
+
 const Product = () => {
   const [preferenceId, setPreferenceId] = useState(null);
 
