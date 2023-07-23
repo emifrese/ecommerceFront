@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import axios from "axios";
+// import axios from "axios";
+import clienteAxios from "../../config/axios";
 import bananaContenta from "../../assets/bananita.png";
 
 import "./Product.css";
@@ -13,14 +14,19 @@ const Product = () => {
 
   const createPreference = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:8080/create_preference",
-        {
-          description: "Bananita contenta",
-          unit_price: 5000,
-          quantity: 1,
-        }
-      );
+      const response = await clienteAxios.post("/create_preference", {
+        description: "Bananita contenta",
+        unit_price: 5000,
+        quantity: 1,
+      })
+      // axios.post(
+      //   `${process.env.BACKEND_URL}/create_preference`,
+      //   {
+      //     description: "Bananita contenta",
+      //     unit_price: 5000,
+      //     quantity: 1,
+      //   }
+      // );
       const { id } = response.data;
       return id;
     } catch (error) {
